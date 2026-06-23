@@ -1,1 +1,95 @@
+document.addEventListener("DOMContentLoaded", () => {
+    inicializarContadores();
+    configurarRolagemSuave();
+    configurarSimulador();
+});
 
+// 1. Efeito de Animação nos Números (Contadores)
+function inicializarContadores() {
+    const contadores = document.querySelectorAll(".numero-agro");
+    const velocidade = 50;
+
+    contadores.forEach(contador => {
+        const atualizarTexto = () => {
+            const alvo = +contador.getAttribute("data-target");
+            const textoAtual = +contador.innerText;
+            const incremento = Math.ceil(alvo / velocidade);
+
+            if (textoAtual < alvo) {
+                contador.innerText = textoAtual + incremento;
+                setTimeout(atualizarTexto, 30);
+            } else {
+                contador.innerText = alvo;
+            }
+        };
+        atualizarTexto();
+    });
+}
+
+// 2. Rolagem Suave para os Links do Menu
+function configurarRolagemSuave() {
+    const links = document.querySelectorAll("header nav a");
+
+    links.forEach(link => {
+        link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const idAlvo = link.getAttribute("href");
+            const elementoAlvo = document.querySelector(idAlvo);
+
+            if (elementoAlvo) {
+                window.scrollTo({
+                    top: elementoAlvo.offsetTop - 80, // Desconto da altura do cabeçalho
+                    behavior: "smooth"
+                });
+            }
+        });
+    });
+}
+
+// 3. Simulador de Produtividade Agrícola
+function configurarSimulador() {
+    const botaoCalcular = document.getElementById("btn-calcular");
+    
+    if (!botaoCalcular) return;
+
+    botaoCalcular.addEventListener("click", () => {
+        const hectares = parseFloat(document.getElementById("hectares").value);
+        const cultura = document.getElementById("cultura").value;
+        const resultadoDiv = document.getElementById("resultado-simulacao");
+
+        if (isNaN(hectares) || hectares <= 0) {
+            resultadoDiv.innerHTML = "<p style='color: #d32f2f; font-weight: bold;'>Por favor, insira uma quantidade de hectares válida.</p>";
+            return;
+        }
+
+        let sacasPorHectare = 0;
+        let nomeCultura = "";
+
+        switch (cultura) {
+            case "soja":
+                sacasPorHectare = 60;
+                nomeCultura = "Soja";
+                break;
+            case "milho":
+                sacasPorHectare = 90;
+                nomeCultura = "Milho";
+                break;
+            case "cafe":
+                sacasPorHectare = 30;
+                nomeCultura = "Café";
+                break;
+        }
+
+        const producaoTotal = hectares * sacasPorHectare;
+
+        // Injeta a div estruturada usando a classe estilizada no CSS (.resultado-box)
+        resultadoDiv.innerHTML = `
+            <div class="resultado-box">
+                <strong>Resultado da Estimativa:</strong><br>
+                Cultura selecionada: <strong>${nomeCultura}</strong><br>
+                Produção estimada: <strong>${producaoTotal.toLocaleString('pt-BR')} sacas</strong> no total.<br>
+                <small>*Cálculo baseado em médias nacionais de produtividade por hectare.</small>
+            </div>
+        `;
+    });
+}
