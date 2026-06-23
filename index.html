@@ -1,1 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agro Forte - O Motor do Brasil</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+    <header>
+        <div class="logo">AGRO FORTE</div>
+        <nav>
+            <a href="#sobre">Sobre</a>
+            <a href="#pilares">Pilares</a>
+            <a href="#estatisticas">Números</a>
+            <a href="#simulador">Simulador</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>O Agro é Forte. O Agro é o Futuro.</h1>
+        <p>Alimentando o mundo, preservando a terra e impulsionando a economia com tecnologia e dedicação.</p>
+    </section>
+
+    <div class="container">
+
+        <section id="sobre">
+            <h2>Sobre o Agro Forte</h2>
+            <p>O agronegócio é um dos principais motores econômicos e sociais do nosso país. Mais do que plantar e colher, o "Agro Forte" representa a união entre a tradição do campo e o que há de mais moderno em tecnologia, garantindo a segurança alimentar para bilhões de pessoas e gerando milhões de empregos.</p>
+        </section>
+
+        <section id="pilares">
+            <h2>Os Três Pilares do Sucesso</h2>
+            <div class="grid-pilares">
+                <div class="card">
+                    <h3>1. Tecnologia e Inovação</h3>
+                    <p>O uso de drones, tratores autônomos, sensores de solo e inteligência artificial otimiza a produção e reduz o desperdício de recursos.</p>
+                </div>
+                <div class="card">
+                    <h3>2. Sustentabilidade</h3>
+                    <p>Práticas como o plantio direto, rotação de culturas e a integração lavoura-pecuária-floresta (ILPF) garantem a preservação do meio ambiente.</p>
+                </div>
+                <div class="card">
+                    <h3>3. Segurança Alimentar</h3>
+                    <p>Produzir alimentos com qualidade, rastreabilidade e em quantidade suficiente para abastecer tanto o mercado interno quanto o externo.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="estatisticas" style="text-align: center;">
+            <h2>O Agro em Números</h2>
+            <div class="grid-pilares">
+                <div class="card">
+                    <h3><span class="numero-agro" data-target="25">0</span>%</h3>
+                    <p>Do PIB Nacional vem do Agronegócio</p>
+                </div>
+                <div class="card">
+                    <h3><span class="numero-agro" data-target="1000">0</span>M+</h3>
+                    <p>De pessoas alimentadas pelo agro brasileiro no mundo</p>
+                </div>
+                <div class="card">
+                    <h3><span class="numero-agro" data-target="150">0</span>M</h3>
+                    <p>De toneladas de grãos produzidos por safra</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="simulador">
+            <h2>Simulador de Produtividade</h2>
+            <p>Veja uma estimativa da capacidade de produção baseada no tamanho da área de plantio:</p>
+            
+            <div class="form-grupo">
+                <div class="campo">
+                    <label for="hectares">Área (em Hectares):</label>
+                    <input type="number" id="hectares" placeholder="Ex: 50">
+                </div>
+                <div class="campo">
+                    <label for="cultura">Cultura:</label>
+                    <select id="cultura">
+                        <option value="soja">Soja</option>
+                        <option value="milho">Milho</option>
+                        <option value="cafe">Café</option>
+                    </select>
+                </div>
+                <button id="btn-calcular" class="btn-agro">Calcular Estimativa</button>
+            </div>
+
+            <div id="resultado-simulacao"></div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Projeto Agro Forte - Desenvolvido para fins educacionais.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
